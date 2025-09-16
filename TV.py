@@ -9,6 +9,13 @@ class TV:
     def change_channel(self, new_channel):
         if 1 <= new_channel <= self.max_channel:
             self.current_channel = new_channel
-            print(f"Channel changed to {self.current_channel}")
+            return True
         else:
-            print("Invalid channel choice. Try again.")
+            return False
+        
+    def decrease_volume(self)
+        if 0 < self.current_volume < self.max_volume
+            self.current_volume += 1
+            return True
+        else:
+            return False
