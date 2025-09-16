@@ -1,6 +1,7 @@
 # TV Simulator
 
 A simple Python program that simulates basic TV functionality.
+thth
 
 ## Features
 - Power on/off
