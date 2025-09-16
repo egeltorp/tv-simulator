@@ -20,9 +20,9 @@ class TV:
         else:
             return False
 
-    def decrease_volume(self)
-        if 0 < self.current_volume < self.max_volume
-            self.current_volume += 1
+    def decrease_volume(self):
+        if 0 < self.current_volume < self.max_volume:
+            self.current_volume -= 1
             return True
         else:
             return False
@@ -31,4 +31,8 @@ class TV:
         pass
 
     def str_for_file(self):
-        pass
+        string = f"{self.tv_name},{self.current_volume},{self.current_channel},{self.max_volume},{self.max_channel}"
+        return string
+    
+HomeTV = TV("Vardagsrums TV", 100, 22, 10, 9)
+TV.str_for_file(HomeTV)
