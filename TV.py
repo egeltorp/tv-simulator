@@ -26,3 +26,6 @@ class TV:
             return True
         else:
             return False
+        
+    def str_for_file():
+        pass
