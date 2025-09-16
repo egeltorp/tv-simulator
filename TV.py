@@ -1,5 +1,5 @@
 class TV:
-    def __init__(self, tv_name, max_channel, current_channel, max_volume, current_volume):
+    def __init__(self, tv_name: str, max_channel: int, current_channel: int, max_volume: int, current_volume: int):
         self.tv_name = tv_name
         self.max_channel = max_channel
         self.current_channel = current_channel
@@ -51,6 +51,11 @@ def tests():
         print(tv2.change_channel(55))
         print(tv)
         print(tv2)
+        list = TV.str_for_file(tv)
+        list = list.split(',')
+        print(list)
 
 if __name__ == "__main__":
     tests()
+    
+    
