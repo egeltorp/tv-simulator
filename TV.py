@@ -31,7 +31,7 @@ class TV:
         return f"{self.tv_name}, channel: {self.current_channel}, volume: {self.current_volume}"
 
     def str_for_file(self):
-        string = f"{self.tv_name},{self.max_channel},{self.current_channel},{self.max_volume},{self.current_volume}"
+        string = f"{self.tv_name},{self.max_channel},{self.current_channel},{self.max_volume},{self.current_volume}\n"
         return string
 
 def tests():
