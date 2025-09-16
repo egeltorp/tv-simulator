@@ -12,17 +12,17 @@ class TV:
             return True
         else:
             return False
-        
-    def decrease_volume(self)
-        if 0 < self.current_volume < self.max_volume
-            self.current_volume += 1
-            return True
-        else:
-            return False
 
     def increase_volume(self):
         if self.current_volume != self.max_volume:
             current_volume += 1
+            return True
+        else:
+            return False
+
+    def decrease_volume(self)
+        if 0 < self.current_volume < self.max_volume
+            self.current_volume += 1
             return True
         else:
             return False
