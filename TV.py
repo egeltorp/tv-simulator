@@ -26,3 +26,5 @@ class TV:
             return True
         else:
             return False
+
+    def __str__(self):
