@@ -27,5 +27,8 @@ class TV:
         else:
             return False
         
-    def str_for_file():
+    def __str__(self):
+        pass
+
+    def str_for_file(self):
         pass
