@@ -16,11 +16,25 @@ def write_file(tv_list, file_path):
             s = tv.str_for_file()
             file.write(s)
 
-tv_list = read_file("TV.txt")
+def adjust_TV_menu():
+    print("1. Byt kanal")
+    print("2. Höj volym")
+    print("3. Sänk volym")
+    print("4. Återgå till huvudmenyn")
 
-tv_list[0].increase_volume()
+    while True:
+        choice = int(input("[!] Välj 1-4: "))
+        if choice not in [1,2,3,4]:
+            print("Ogiltigt val, försök igen.")
+        else:
+            break
+    return choice
 
-write_file(tv_list, "TV.txt")
+def simulator():
+    print("--- Välkommen till TV-simulatorn ---")
+    adjust_TV_menu()
 
-for tv in tv_list:
-    print(tv)
+    pass
+
+if __name__ == "__main__":
+    simulator()
