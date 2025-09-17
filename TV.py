@@ -28,7 +28,7 @@ class TV:
             return False
         
     def __str__(self):
-        return f"> {self.tv_name:<15} | Kanal: {self.current_channel:<3} | Volym: {self.current_volume:<3}"
+        return f"{self.tv_name:<15} | Kanal: {self.current_channel:<3} | Volym: {self.current_volume:<3}"
 
     def str_for_file(self):
         string = f"{self.tv_name},{self.max_channel},{self.current_channel},{self.max_volume},{self.current_volume}\n"
