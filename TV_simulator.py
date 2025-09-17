@@ -17,7 +17,11 @@ def write_file(tv_list, file_path):
             file.write(s)
 
 def adjust_TV_menu(tv: TV):
+    quit_menu = False
     while True:
+        if quit_menu:
+            break
+
         print(f"\n{tv}")
         print("1. Byt kanal")
         print("2. Sänk volym")
@@ -41,11 +45,13 @@ def adjust_TV_menu(tv: TV):
                     break
         elif choice in (2, 3):
             print(f"Volym: {tv.current_volume}")
-            actions = {2: tv.decrease_volume(), 3: tv.increase_volume()}
+            actions = {2: tv.decrease_volume, 3: tv.increase_volume}
             actions[choice]()
         elif choice == 4:
-            break
-        break
+            quit_menu = True
+
+def select_TV_menu(tv_list: list):
+    pass
 
 def simulator():
     # initializing
@@ -53,9 +59,10 @@ def simulator():
     tv = tv_list[1]
     print("--- Välkommen till TV-simulatorn ---")
 
-    adjust_TV_menu(tv)
+    while True:
+        tv = select_TV_menu(tv_list)
+        adjust_TV_menu(tv)
 
-    pass
 
 if __name__ == "__main__":
     simulator()
