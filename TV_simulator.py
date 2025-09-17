@@ -51,13 +51,32 @@ def adjust_TV_menu(tv: TV):
             quit_menu = True
 
 def select_TV_menu(tv_list: list):
-    pass
+    for i, tv in enumerate (tv_list, start=1):
+        print(f"{i}. {tv}")
+    print(f"{len(tv_list) + 1}. Avsluta")
+
+    # tv select loop
+    quit_program = False
+    options = tuple(range(1, len(tv_list) + 1))
+    while True:
+        choice = int(input(f"\n[!] Välj 1-{len(tv_list) + 1}: "))
+        if choice in options: 
+            break
+        elif choice == len(tv_list):
+            quit_program = True
+        print("Ogiltig TV. Försök igen!")
+
+    if quit_program:
+        return None
+    tv = tv_list[choice - 1]
+    return tv
 
 def simulator():
     # initializing
     tv_list = read_file("TV.txt")
     tv = tv_list[1]
-    print("--- Välkommen till TV-simulatorn ---")
+    print("\n--- Välkommen till TV-simulatorn ---")
+    print()
 
     while True:
         tv = select_TV_menu(tv_list)
