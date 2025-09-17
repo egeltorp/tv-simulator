@@ -1,12 +1,12 @@
 # TV Simulator
 
 A simple Python program that simulates basic TV functionality.
-thth
 
 ## Features
-- Power on/off
+- Selecting a TV
 - Change channels
 - Adjust volume
+- Autosaving TV states
 
 ## Requirements
 - Python 3.x
@@ -14,5 +14,5 @@ thth
 ## Installation
 Clone the repository:
 ```bash
-git clone https://github.com/username/tv-simulator.git
+git clone https://github.com/egeltorp/tv-simulator.git
 cd tv-simulator
