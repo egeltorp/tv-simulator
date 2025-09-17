@@ -32,42 +32,29 @@ def adjust_TV_menu(tv: TV):
         options = (1,2,3,4)
         while True:
             choice = int(input("\n[!] Välj 1-4: "))
-            if choice in options: break
+            if choice in options:
+                return choice
             print("Ogiltigt. Försök igen!")
-        
-        if choice == 1:
-            while True:
-                new_channel = int(input("Välj ny kanal: "))
-                if not tv.change_channel(new_channel):
-                    print("Kanal finns inte.")
-                else:
-                    tv.change_channel(new_channel)
-                    break
-        elif choice in (2, 3):
-            print(f"Volym: {tv.current_volume}")
-            actions = {2: tv.decrease_volume, 3: tv.increase_volume}
-            actions[choice]()
-        elif choice == 4:
-            quit_menu = True
 
 def select_TV_menu(tv_list: list):
+    print("\n--- HUVUDMENYN ---")
     for i, tv in enumerate (tv_list, start=1):
         print(f"{i}. {tv}")
     print(f"{len(tv_list) + 1}. Avsluta")
 
     # tv select loop
-    quit_program = False
     options = tuple(range(1, len(tv_list) + 1))
     while True:
-        choice = int(input(f"\n[!] Välj 1-{len(tv_list) + 1}: "))
-        if choice in options: 
-            break
-        elif choice == len(tv_list):
-            quit_program = True
-        print("Ogiltig TV. Försök igen!")
+        try:
+            choice = int(input(f"\n[!] Välj 1-{len(tv_list) + 1}: "))
+            if choice in options: 
+                break
+            elif choice == len(tv_list) + 1:
+                return None
+            print("Ogiltig TV. Försök igen!")
+        except ValueError:
+            print("Måste vara en siffra.")
 
-    if quit_program:
-        return None
     tv = tv_list[choice - 1]
     return tv
 
@@ -75,12 +62,31 @@ def simulator():
     # initializing
     tv_list = read_file("TV.txt")
     tv = tv_list[1]
-    print("\n--- Välkommen till TV-simulatorn ---")
+    print("\n*** Välkommen till TV-simulatorn ***")
     print()
 
     while True:
         tv = select_TV_menu(tv_list)
-        adjust_TV_menu(tv)
+        if tv == None:
+            break
+        while True:
+            choice = adjust_TV_menu(tv)
+            if choice == 1:
+                while True:
+                    new_channel = int(input("Välj ny kanal: "))
+                    if not tv.change_channel(new_channel):
+                        print("Kanal finns inte.")
+                    else:
+                        tv.change_channel(new_channel)
+                        break
+            elif choice in (2, 3):
+                print(f"Volym: {tv.current_volume}")
+                actions = {2: tv.decrease_volume, 3: tv.increase_volume}
+                actions[choice]()
+            elif choice == 4:
+                break
+    write_file(tv_list, "TV.txt")
+    print("Avslutar.")
 
 
 if __name__ == "__main__":
