@@ -21,14 +21,14 @@ class TV:
             return False
 
     def decrease_volume(self):
-        if 0 < self.current_volume < self.max_volume:
+        if 1 <= self.current_volume:
             self.current_volume -= 1
             return True
         else:
             return False
         
     def __str__(self):
-        return f"{self.tv_name}, channel: {self.current_channel}, volume: {self.current_volume}"
+        return f"> {self.tv_name} | Kanal: {self.current_channel} | Volym: {self.current_volume}"
 
     def str_for_file(self):
         string = f"{self.tv_name},{self.max_channel},{self.current_channel},{self.max_volume},{self.current_volume}\n"
