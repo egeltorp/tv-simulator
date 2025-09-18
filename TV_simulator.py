@@ -34,10 +34,13 @@ def adjust_TV_menu(tv: TV):
         # menu choice loop
         options = (1,2,3,4)
         while True:
-            choice = int(input("\n[!] Välj 1-4: "))
-            if choice in options:
-                return choice
-            print("Ogiltigt. Försök igen!")
+            try:
+                choice = int(input("\n[!] Välj 1-4: "))
+                if choice in options:
+                    return choice
+                raise ValueError
+            except ValueError:
+                print("Måste vara en siffra mellan 1-4.")
 
 # menu to choose which TV-class obj to currently simulate, returns obj
 def select_TV_menu(tv_list: list):
@@ -82,12 +85,15 @@ def simulator():
             # choice 1: change channel
             if choice == 1:
                 while True:
-                    new_channel = int(input("Välj ny kanal: "))
-                    if not tv.change_channel(new_channel):
-                        print("Kanal finns inte.")
-                    else:
-                        tv.change_channel(new_channel)
-                        break
+                    try:
+                        new_channel = int(input("Välj ny kanal: "))
+                        if not tv.change_channel(new_channel):
+                            print("Kanal finns inte.")
+                        else:
+                            tv.change_channel(new_channel)
+                            break
+                    except ValueError:
+                        print("Kanal måste vara en siffra.")
             # choice 2: decrease vol, choice 3: increase vol
             elif choice in (2, 3):
                 print(f"Volym: {tv.current_volume}")
